@@ -17,7 +17,7 @@ public class ProductController {
 	// Product controller 
 	@Autowired
 	private WalkingService service;
-	
+	// product id is not serialize
 	@GetMapping("/product/{id}")
 	public ResponseEntity<Product> getProducts(@PathVariable("id") Long id){
 		
