@@ -14,7 +14,7 @@ import com.org.walkapp.services.WalkingService;
 @RestController
 @RequestMapping("api/v1")
 public class ProductController {
-	
+	// Product controller 
 	@Autowired
 	private WalkingService service;
 	
