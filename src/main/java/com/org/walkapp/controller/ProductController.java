@@ -1,5 +1,8 @@
 package com.org.walkapp.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +28,11 @@ public class ProductController {
 		return new ResponseEntity<Product>(service.find(id), HttpStatus.OK); 
 	}
 	
-	
+	@GetMapping("/products/{categoryId}")
+	public ResponseEntity<Optional<Product>> getProductsByCategoryId(@PathVariable("categoryId") Long categoryId) throws RuntimeException, Exception
+	{
+		return new ResponseEntity<Optional<Product>>(service.findProductsByCategoryId(categoryId), HttpStatus.OK);
+	}
 	
 
 }
