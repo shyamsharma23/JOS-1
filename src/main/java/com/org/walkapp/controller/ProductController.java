@@ -29,9 +29,9 @@ public class ProductController {
 	}
 	
 	@GetMapping("/products/{categoryId}")
-	public ResponseEntity<Optional<Product>> getProductsByCategoryId(@PathVariable("categoryId") Long categoryId) throws RuntimeException, Exception
+	public ResponseEntity<List<Product>> getProductsByCategoryId(@PathVariable("categoryId") Long categoryId) throws RuntimeException, Exception
 	{
-		return new ResponseEntity<Optional<Product>>(service.findProductsByCategoryId(categoryId), HttpStatus.OK);
+		return new ResponseEntity<List<Product>>(service.findAll(categoryId), HttpStatus.OK);
 	}
 	
 

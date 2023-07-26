@@ -27,14 +27,10 @@ public class WalkingService {
 				    
 			}
 			
-			public Optional<Product> findProductsByCategoryId(Long categoryId) throws RuntimeException, Exception {
-//				ProductCategory category = pcdao.findById(categoryId).orElse(null);
-				Optional<Product> products =  Optional.ofNullable(pdao.findByCategoryId(categoryId).orElseThrow(() -> new RuntimeException("Data not found!")));				    
-				if(products.isPresent()) {
-					return products;
-				}
+			public List<Product> findAll(Long categoryId) throws RuntimeException, Exception {
+				List<Product> listOfProduct = pdao.findByCategoryId(categoryId);
+				return listOfProduct;
 				
-				return null;
 		    }
 			
 			
