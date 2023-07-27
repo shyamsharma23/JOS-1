@@ -42,5 +42,13 @@ public class WalkingService {
 				}
 				return 0;
 			}
+
+			public Product delete(Long id) {
+				Product product = pdao.findById(id)
+						.orElseThrow(() -> new RuntimeException("Data not found with this ID"));
+
+				pdao.delete(product);
+				return product;
+			}
 			
 }
