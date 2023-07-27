@@ -30,5 +30,10 @@ public class WalkingService {
 //			    // find it by category id
 //		    }
 			
+			public Product createProduct(Product product) {
+				
+				Product productone = pdao.save(product);
+				return productone;
+			}
 			
 }

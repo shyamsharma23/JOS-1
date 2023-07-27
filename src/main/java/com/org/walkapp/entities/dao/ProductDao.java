@@ -8,5 +8,6 @@ import com.org.walkapp.entities.Product;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product,Long> {
+	 
 		
 }
