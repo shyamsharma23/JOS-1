@@ -107,6 +107,8 @@ public class Product {
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+	
+	
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
