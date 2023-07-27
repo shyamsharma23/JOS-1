@@ -14,7 +14,11 @@ import com.org.walkapp.entities.ProductCategory;
 
 @Repository
 public interface ProductDao extends JpaRepository<Product,Long> {
+
+	 
+
 	
 	@Query(value = "SELECT * FROM product where category_id =?1", nativeQuery = true)
 	public List<Product> findByCategoryId(Long id) throws Exception;
+
 }
