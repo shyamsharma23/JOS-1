@@ -3,12 +3,7 @@ package com.org.walkapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.org.walkapp.entities.Product;
 import com.org.walkapp.entities.dao.ProductDao;
@@ -32,5 +27,16 @@ public class ProductController {
         return new ResponseEntity<>("product created successfully", HttpStatus.CREATED);
     }
 	
+	
+	@PutMapping("/product/{id}")
+	public ResponseEntity<Integer> udpateProduct(@PathVariable("id") Long id, @RequestBody Product request) {
+		
+		return new ResponseEntity<Integer>(service.update(id, request), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/product/{id}")
+	public ResponseEntity<Product> deleteProduct(@PathVariable("id") Long id) {
+		return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
+	}
 
 }
