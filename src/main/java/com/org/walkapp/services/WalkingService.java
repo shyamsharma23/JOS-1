@@ -20,6 +20,14 @@ public class WalkingService {
 			ProductDao pdao;
 			@Autowired
 			ProductCategoryDao pcdao;
+			
+			public List<ProductCategory> findCategoryList(){
+				return pcdao.findAll();
+			}
+			
+			public List<Product> findAllProducts(){
+				return pdao.findAll();
+			}
 	
 			public Product find(Long id) {
 				    Product obj =  pdao.findById(id).orElseThrow(() -> new RuntimeException("Data not found with this ID"));
@@ -30,8 +38,11 @@ public class WalkingService {
 			
 			
 			public Product createProduct(Product product) {
-				
-				Product productone = pdao.save(product);
+				Product obj = new Product();
+				obj.setCategory(product.getCategory());
+				obj.setName(product.getName());
+				obj.setDescription(product.getDescription());
+				Product productone = pdao.save(obj);
 				return productone;
 			}
 			public Product update(Long id, Product request) {

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.org.walkapp.entities.Product;
+import com.org.walkapp.entities.ProductCategory;
 import com.org.walkapp.entities.dao.ProductDao;
 import com.org.walkapp.services.WalkingService;
 
@@ -19,15 +20,25 @@ public class ProductController {
 	@Autowired
 	private WalkingService service;
 	
+	@GetMapping("/category")
+	public ResponseEntity<List<ProductCategory>> getAllCategory(){
+		return new ResponseEntity<List<ProductCategory>>(service.findCategoryList(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/products")
+	public ResponseEntity<List<Product>> getAllProducts(){
+		return new ResponseEntity(service.findAllProducts(), HttpStatus.OK);
+	}
+	
 	@GetMapping("/product/{id}")
 	public ResponseEntity<Product> getProducts(@PathVariable("id") Long id){
 		return new ResponseEntity<Product>(service.find(id), HttpStatus.OK); 
 	}
 	
 	@PostMapping("/product/create")
-    public ResponseEntity<String> create(@RequestBody Product product) {
+    public ResponseEntity<Product> create(@RequestBody Product product) {
            Product prod = service.createProduct(product);  
-        return new ResponseEntity<>("product created successfully", HttpStatus.CREATED);
+        return new ResponseEntity<Product>(prod, HttpStatus.OK);
     }
 	
 	
