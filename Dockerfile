@@ -11,4 +11,4 @@ RUN ./mvnw dependency:resolve
 COPY src ./src
 
 
-CMD ["sudo ./mvnw", "spring-boot:run"]
+CMD ["./mvnw", "spring-boot:run"]
