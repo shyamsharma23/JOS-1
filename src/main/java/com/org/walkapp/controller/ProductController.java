@@ -13,6 +13,7 @@ import com.org.walkapp.entities.ProductCategory;
 import com.org.walkapp.entities.dao.ProductDao;
 import com.org.walkapp.services.WalkingService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/v1")
 public class ProductController {
