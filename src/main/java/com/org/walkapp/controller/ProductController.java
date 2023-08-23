@@ -20,40 +20,36 @@ public class ProductController {
 
 	@Autowired
 	private WalkingService service;
-	
+
 	@GetMapping("/category")
-	public ResponseEntity<List<ProductCategory>> getAllCategory(){
+	public ResponseEntity<List<ProductCategory>> getAllCategory() {
 		return new ResponseEntity<List<ProductCategory>>(service.findCategoryList(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/products")
-	public ResponseEntity<List<Product>> getAllProducts(){
+	public ResponseEntity<List<Product>> getAllProducts() {
 		return new ResponseEntity(service.findAllProducts(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/product/{id}")
-	public ResponseEntity<Product> getProducts(@PathVariable("id") Long id){
-		return new ResponseEntity<Product>(service.find(id), HttpStatus.OK); 
+	public ResponseEntity<Product> getProducts(@PathVariable("id") Long id) {
+		return new ResponseEntity<Product>(service.find(id), HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/product/create")
-    public ResponseEntity<Product> create(@RequestBody Product product) {
-           Product prod = service.createProduct(product);  
-        return new ResponseEntity<Product>(prod, HttpStatus.OK);
-    }
-	
-	
+	public ResponseEntity<Product> create(@RequestBody Product product) {
+		Product prod = service.createProduct(product);
+		return new ResponseEntity<Product>(prod, HttpStatus.OK);
+	}
 
 	// Product controller
-	
-
+	// Added for jenkins purpose
 
 	@GetMapping("/products/{categoryId}")
 	public ResponseEntity<List<Product>> getProductsByCategoryId(@PathVariable("categoryId") Long categoryId)
 			throws RuntimeException, Exception {
 		return new ResponseEntity<List<Product>>(service.findAll(categoryId), HttpStatus.OK);
 	}
-
 
 	@PutMapping("/product/{id}")
 	public ResponseEntity<Product> udpateProduct(@PathVariable("id") Long id, @RequestBody Product request) {
