@@ -31,7 +31,7 @@ public class ProductController {
 		return new ResponseEntity(service.findAllProducts(), HttpStatus.OK);
 	}
 
-	@GetMapping("/product/{id}")
+	@GetMapping("/product/{id}") // Controller for recieving get request
 	public ResponseEntity<Product> getProducts(@PathVariable("id") Long id) {
 		return new ResponseEntity<Product>(service.find(id), HttpStatus.OK);
 	}
