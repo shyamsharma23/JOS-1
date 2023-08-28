@@ -20,5 +20,10 @@ public interface ProductDao extends JpaRepository<Product,Long> {
 	
 	@Query(value = "SELECT * FROM product where category_id =?1", nativeQuery = true)
 	public List<Product> findByCategoryId(Long id) throws Exception;
+	
+	@Query("SELECT p FROM Product p WHERE " +
+            "p.name LIKE CONCAT('%',:query, '%')" +
+            "Or p.description LIKE CONCAT('%', :query, '%')")
+    List<Product> searchProducts(String query);
 
 }
