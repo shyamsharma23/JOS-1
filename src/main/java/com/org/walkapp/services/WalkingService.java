@@ -86,6 +86,12 @@ public class WalkingService {
 		pdao.delete(product);
 		return product;
 	}
+	
+	public List<Product> search(String q){
+		
+		return pdao.searchProducts(q);
+		
+	}
 
 
 }
